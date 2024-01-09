@@ -1,0 +1,7 @@
+.heading{
+    background-color: rgba(205, 201, 201, 0.29);
+    margin: 4px;
+    padding: 6px;
+}
+
+@import "../../../../../node_modules/bootstrap/scss/bootstrap"
