@@ -8,6 +8,7 @@
     "inlineSources": true,
     "types": []
   },
+  // "noImplicitAny": true,
   "exclude": [
     "**/*.spec.ts"
   ]

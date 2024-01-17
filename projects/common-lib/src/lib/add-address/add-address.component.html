@@ -1,0 +1,137 @@
+<!-- <script src="https://unpkg.com/@googlemaps/js-api-loader@1.x/dist/index.min.js"></script> -->
+
+<div>abc lmn</div>
+
+<!-- <div class="example-container example-container-flat mat-elevation-z5">
+    <div class="section-header section-header-flat">{{title}}</div>
+  
+    <form class="block-padding" [formGroup]="addressForm">
+  
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-lg-4">
+          <mat-form-field class="example-full-width theme-form-control">
+            <mat-label>Contact Name</mat-label>
+            <input matInput formControlName="name" required (keyup)="onRemoveSpace($event,'name');">
+            <mat-error *ngIf="f['name'].hasError('required')">Contact Name is required.</mat-error>
+          </mat-form-field>
+        </div>
+  
+  
+        <div class="col-xs-12 col-sm-6 col-lg-4">
+          <mat-form-field class="example-full-width theme-form-control">
+            <mat-label>Mobile</mat-label>
+            <input matInput formControlName="phone" (keypress)="onKeyUp($event);decimalFilter($event)" maxlength="10" minlength="10" required>
+            <mat-error *ngIf="f['phone'].hasError('required')">Mobile is required.
+            </mat-error>
+            <mat-error *ngIf="f['phone'].hasError('minlength')">Please enter 10 digit Mobile number</mat-error>
+          </mat-form-field>
+        </div>
+  
+        <div class="col-xs-12 col-sm-6 col-lg-4">
+          <mat-form-field class="example-full-width theme-form-control">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" class="email" (keyup)="onRemoveSpace($event,'email');">
+            <mat-error *ngIf="f['email'].hasError('email')">please enter valid email</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+  
+      <div *ngIf="!hideDisplayName">
+        <div class="display-name">
+          <p><b>Now give some friendly name to your address so that you can easily search/recognize it (ex. Warehouse,
+            Ashram Road or My Home). </b></p>
+        </div>
+  
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-lg-4">
+            <div class="d-flex">
+              <mat-form-field class="example-full-width theme-form-control">
+                <mat-label>Display Name</mat-label>
+                <input matInput formControlName="title" placeholder="Ex. Warehouse, Ashram Road">
+                <mat-error *ngIf="f['title'].hasError('required')">Display Name is required.</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div>
+        <p><b>In order to correctly capture your location, follow below two steps:</b></p>
+        <ol>
+          <li>In below search bow type your society name followed by area name and city (ex. Harmony Pearl, Sola,
+            Ahmedabad). Select the correct address from search drop box
+          </li>
+          <li>Now to precisisly locate your building, drag the marker from the map and drop it on your building or society
+            gate. If required, you can zoom in/zoom out by clicking on + & - buttons on map located at bottom right corner
+          </li>
+        </ol>
+      </div>
+  
+      <div class="row">
+        <div class="col-sm-12 col-lg-6">
+          <div class="map-style" name="map" #mapElement></div>
+        </div>
+        <div class="col-sm-12 col-lg-6 form-col">
+          <mat-form-field class="example-full-width theme-form-control">
+            <input matInput #searchInput type="search" zoom="20" placeholder="Search by society name, area and city"/>
+            <mat-icon style="position: relative; top: 4px;" matPrefix>search</mat-icon>
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width theme-form-control">
+            <mat-label>House/Flat/BlockNo, Building Name</mat-label>
+            <textarea #address1 matInput placeholder="Ex. 902, Zinia, Nyati Exotica" formControlName="address1"
+            required></textarea>
+            <mat-error *ngIf="f['address1'].hasError('required')">Address is required.</mat-error>
+            <mat-error *ngIf="f['address1'].hasError('maxlength')">Address is only 50 character.</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width theme-form-control">
+            <mat-label>Appartment Name, Road, Area</mat-label>
+            <textarea matInput formControlName="address2"></textarea>
+            <mat-error *ngIf="f['address2'].hasError('maxlength')">Address is only 50 character.</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width theme-form-control">
+            <mat-label>Pincode</mat-label>
+            <input [(ngModel)] = "currentZip" matInput #zipCode maxlength="6" minlength="6" placeholder="Ex. 110011" formControlName="zip"
+                   (keypress)="onKeyUpZip($event)" (ngModelChange)="pincodeInputChanged($event)" required>
+            <mat-hint align="end">{{zipCode.value.length}} / 6</mat-hint>
+            <mat-error *ngIf="f['zip'].hasError('required')">Postal Code is required.</mat-error>
+            <mat-error *ngIf="f['zip'].hasError('maxlength') || f['zip'].hasError('minlength')">Post code must have 6
+              digits
+            </mat-error>
+          </mat-form-field>
+          <mat-error
+            *ngIf="!validZip && zipCode.value && !f['zip'].hasError('maxlength') && !f['zip'].hasError('minlength')"
+            style="margin-top: -20px;font-size: 75%;margin-bottom: 10px;">Pincode is not matched with entered location,
+            please do correct
+          </mat-error>
+  
+          <mat-form-field class="example-full-width theme-form-control">
+            <mat-label>State</mat-label>
+            <input matInput formControlName="state" autocomplete="off" [readonly]="address.state"
+                   style="cursor: context-menu;pointer-events:none;">
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width theme-form-control">
+            <mat-label>City</mat-label>
+            <input matInput formControlName="city" [readonly]="address.city"
+                   style="cursor: context-menu;pointer-events:none;">
+          </mat-form-field>
+  
+          <div *ngIf="address.latitude" class="lat-lng">
+            <b>Latitude:</b> {{address.latitude | number : '1.2-5'}},
+            <b>Longitude:</b> {{address.longitude | number : '1.2-5' }}
+          </div>
+        </div>
+      </div>
+    </form>
+    <div *ngIf="!hideButtons" class="d-flex justify-content-center" style="padding-top: 10px;">
+      <button style="margin-right: 10px;" mat-raised-button color="primary"
+              [disabled]="((!addressForm.valid && addressForm.touched) || !addressForm.touched)" (click)="onSubmit()">Save
+        Address
+      </button>
+      <button type="reset" mat-raised-button color="warn" (click)="reset()">Reset</button>
+    </div>
+  </div> -->
+  

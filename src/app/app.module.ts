@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonLibModule } from 'common-lib';
+import { CommonModule } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,9 @@ import { CommonLibModule } from 'common-lib';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CommonLibModule
+    CommonModule,
+    CommonLibModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

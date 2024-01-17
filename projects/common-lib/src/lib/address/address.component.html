@@ -1,56 +1,66 @@
-<div class=" col-4 m-4">
-    <h4>ADD NEW ADDRESS </h4>
+<div class="m-4">
+    <h4 class="d-flex justify-content-center">ADD NEW ADDRESS </h4>
     <form class="pt-2" [formGroup]="addressForm">
-        <div class="heading"> CONTACT DETAILS </div>
-        <div class="m-4">
-            <input class="col-3 form-control" placeholder="First Name*" formControlName="firstName">
-            <small class="text-danger" *ngIf="addressForm.get('firstName')?.touched && addressForm.get('firstName')?.hasError('required')">This is mandatory field</small>
+        <div class="d-flex justify-content-lg-around">
+            <div class="mx-4 my-2">
+                <input class="col-3 form-control" placeholder="First Name*" formControlName="first_name">
+                <small class="text-danger" *ngIf="addressForm.get('first_name')?.touched && addressForm.get('first_name')?.hasError('required')">This is mandatory field</small>
+            </div>
+            <div class="mx-4 my-2">
+                <input class="col-2 form-control" placeholder="Last Name*" formControlName="last_name">
+                <small class="text-danger" *ngIf="addressForm.get('last_name')?.touched && addressForm.get('last_name')?.hasError('required')">This is mandatory field</small>
+            </div>
         </div>
-        <div class="m-4">
-            <input class="col-2 form-control" placeholder="Last Name*" formControlName="lastName">
-            <small class="text-danger" *ngIf="addressForm.get('lastName')?.touched && addressForm.get('lastName')?.hasError('required')">This is mandatory field</small>
-        </div> 
-        <div class="m-4">
-            <input class="col-3 form-control" placeholder="Mobile No*" formControlName="mobileNumber">
-            <small class="text-danger" *ngIf="addressForm.get('mobileNumber')?.touched && addressForm.get('mobileNumber')?.hasError('required')">This is mandatory field</small>
-            <small class="text-danger" *ngIf="addressForm.get('mobileNumber')?.touched && addressForm.get('mobileNumber')?.hasError('pattern')">Mobile number should be in number</small>
-            <small class="text-danger" *ngIf="addressForm.get('mobileNumber')?.touched && !addressForm.get('mobileNumber')?.hasError('pattern') && (addressForm.get('mobileNumber')?.hasError('maxlength') 
-            || addressForm.get('mobileNumber')?.hasError('minlength'))">Mobile number should be 10 digit</small>
+
+        <div class="d-flex justify-content-evenly">
+            <div class="mx-4 my-2">
+                <input class="col-3 form-control" placeholder="Mobile No*" formControlName="mobile_number">
+                <small class="text-danger" *ngIf="addressForm.get('mobile_number')?.touched && addressForm.get('mobile_number')?.hasError('required')">This is mandatory field</small>
+                <small class="text-danger" *ngIf="addressForm.get('mobile_number')?.touched && addressForm.get('mobile_number')?.hasError('pattern')">Mobile number should be in number</small>
+                <small class="text-danger" *ngIf="addressForm.get('mobile_number')?.touched && !addressForm.get('mobile_number')?.hasError('pattern') && (addressForm.get('mobile_number')?.hasError('maxlength') 
+                || addressForm.get('mobile_number')?.hasError('minlength'))">Mobile number should be 10 digit</small>
+            </div>
+            <div class="mx-4 my-2">
+                <input class="col-3 form-control" placeholder="Pin*" formControlName="pin">
+                <small class="text-danger" *ngIf="addressForm.get('pin')?.touched && addressForm.get('pin')?.hasError('required')">This is mandatory field</small>
+                <small class="text-danger" *ngIf="addressForm.get('pin')?.touched && addressForm.get('pin')?.hasError('pattern')">Pin should be in number</small>
+                <small class="text-danger" *ngIf="addressForm.get('pin')?.touched && (addressForm.get('pin')?.hasError('maxlength') 
+                || addressForm.get('pin')?.hasError('minlength'))">Pin should be 6 digit</small>
+            </div>
         </div>
-        <div class="heading"> ADDRESS </div>
-        <div class="m-4">
+       
+        <div class="mx-4 mb-4 mt-2">
             <input class="col-3 form-control" placeholder="Address1*" formControlName="address1">
             <small class="text-danger" *ngIf="addressForm.get('address1')?.touched && addressForm.get('address1')?.hasError('required')">This is mandatory field</small>
         </div>
-        <div class="m-4">
+        <div class="mx-4">
             <input class="col-3 form-control" placeholder="Address2*" formControlName="address2">
             <small class="text-danger" *ngIf="addressForm.get('address2')?.touched && addressForm.get('address2')?.hasError('required')">This is mandatory field</small>
         </div>
-        <div class="m-4">
-            <input class="col-3 form-control" placeholder="Pin*" formControlName="pin">
-            <small class="text-danger" *ngIf="addressForm.get('pin')?.touched && addressForm.get('pin')?.hasError('required')">This is mandatory field</small>
-            <small class="text-danger" *ngIf="addressForm.get('pin')?.touched && addressForm.get('pin')?.hasError('pattern')">Pin should be in number</small>
-            <small class="text-danger" *ngIf="addressForm.get('pin')?.touched && (addressForm.get('pin')?.hasError('maxlength') 
-            || addressForm.get('pin')?.hasError('minlength'))">Pin should be 6 digit</small>
-        </div>
-        <div class="m-4"> 
+       
+        <div class="mx-4 mt-4"> 
             <input class="col-3 form-control" placeholder="Landmark*" formControlName="landmark">
             <small class="text-danger" *ngIf="addressForm.get('landmark')?.touched && addressForm.get('landmark')?.hasError('required')">This is mandatory field</small>
         </div>
-        <div class="m-4">
-            <input class="col-3 form-control" placeholder="State*" formControlName="state">
-            <small class="text-danger" *ngIf="addressForm.get('lastName')?.touched && addressForm.get('lastName')?.hasError('required')">This is mandatory field</small>
+
+        <div class="d-flex justify-content-center">
+            <div class="m-4">
+                <input class="col-3 form-control" placeholder="State*" formControlName="state">
+                <small class="text-danger" *ngIf="addressForm.get('state')?.touched && addressForm.get('state')?.hasError('required')">This is mandatory field</small>
+            </div>
+            <div class="m-4">
+                <input class="col-3 form-control" placeholder="City*" formControlName="city">
+                <small class="text-danger" *ngIf="addressForm.get('city')?.touched && addressForm.get('city')?.hasError('required')">This is mandatory field</small>
+            </div>
         </div>
-        <div class="m-4">
+       
+        <!-- <div class="m-4">
             <input class="col-3 form-control" placeholder="Dist*" formControlName="dist">
-            <small class="text-danger" *ngIf="addressForm.get('state')?.touched && addressForm.get('state')?.hasError('required')">This is mandatory field</small>
+            <small class="text-danger" *ngIf="addressForm.get('dist')?.touched && addressForm.get('dist')?.hasError('required')">This is mandatory field</small>
+        </div> -->
+     
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="px-4 py-2 btn btn-primary" (click)=addAddress()>Add Address</button>
         </div>
-        <div class="m-4">
-            <input class="col-3 form-control" placeholder="City*" formControlName="city">
-            <small class="text-danger" *ngIf="addressForm.get('city')?.touched && addressForm.get('city')?.hasError('required')">This is mandatory field</small>
-        </div>
-        <div class="justify-content-center">
-            <button type="submit" class="px-4 btn btn-primary" (click)=addAddress()>Add Address</button>
-        </div>
-    </form>
+    </form> 
 </div>

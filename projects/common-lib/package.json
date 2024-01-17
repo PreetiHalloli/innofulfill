@@ -7,7 +7,14 @@
     "bootstrap": "^5.0.1"
   },
   "dependencies": {
+    // "@angular/google-maps": "^17.0.5",
+    // "@angular/material": "^17.0.5",
+    // "@googlemaps/js-api-loader": "^1.16.2",
+    // "@ng-bootstrap/ng-bootstrap": "^16.0.0",
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "devDependencies": {
+    "@types/google.maps": "^3.54.10"
+  }
 }
